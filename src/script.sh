@@ -14,7 +14,7 @@ echo -e -n "${WHITE}Please enter the hash of the commit where the search should 
 read commit_hash
 
 # Checking whether the commit is present on one of the branches
-branches=($(git branch --format="%(refname:short)" --contains $commit_hash 2>/dev/null))
+branches=($(git branch --all --format="%(refname:short)" --contains $commit_hash 2>/dev/null))
 if [ ${#branches[@]} -eq 0 ]; then
   echo -e "\n${WHITE}No branch found which contains a commit with the hash of ${PURPLE}$commit_hash${WHITE}"
   exit 1
